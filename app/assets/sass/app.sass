@@ -1,0 +1,249 @@
+$button-bcg-color: rgb(26, 100, 202)
+$btn-bcg-color-dis: #99ccff
+$exec-field-size: 350px
+$exec-result-width:180px
+$exe1-field-sum: 100px
+$valid-result-color: rgb(85, 248, 85)
+$invalid-result-color: rgb(255, 88, 88)
+
+/* defined mixins */
+
+
+@mixin progress-bar-text($color)
+  color: $color
+  font-size: 26px
+  left: 0px
+  position: absolute
+  text-align: center
+  top: 5px
+  right: 0px
+  width: 100%
+  z-index: 2
+
+@mixin progress($color)
+  height: 30px
+  background-color: white
+  border: 2px solid $color
+
+body
+  font-weight: 300
+  color: black
+  background-color: #F2F2F2
+
+/* Main menu header */
+.header
+  background-color: rgb(86, 205, 16)
+
+
+/* container override the bootsrap defaults */
+.container
+  width: 1000px !important
+  padding: 5px 5px
+
+.title
+  font-family: "Helvetica Neue", Arial, sans-serif
+  font-size: 40px
+
+a:hover
+  text-decoration: none
+
+ul
+  list-style: none
+  padding: 0px
+
+.disabled
+  background-color: $btn-bcg-color-dis !important
+  cursor: not-allowed
+
+.valid-result
+  background-color: $valid-result-color !important
+  cursor: pointer !important
+
+.invalid-result
+  background-color: $invalid-result-color !important
+  cursor: pointer !important
+
+
+.side-vertical-center
+  margin-top: $exec-field-size/2
+
+
+.exercise-container
+  border-radius: 8px
+  background-color: #FFF
+  box-shadow: 5px 5px 4px #888888
+  text-align: center
+
+
+/* customized uib progress bar */
+
+.progress-bar-exe1
+  position: relative
+  background-color: #FFEED6
+
+.progress-exe1
+  @include progress(#E48400)
+
+.progress-bar-exe1 b
+  @include progress-bar-text(#E48400)
+
+
+.progress-bar-exe2
+  background-color: #F4CBFC
+
+.progress-exe2
+  @include progress(#E24CFF)
+
+.progress-bar-exe2 b
+  @include progress-bar-text(#E24CFF)
+
+
+/* exercise close button css */
+.close-btn
+  margin: 20px 20px 0px 0px
+
+/* remove btn style */
+.remove-btn
+  display: inline-block
+  border-radius: 10px
+  background: #908DEB
+  border: 3px solid #4741E8
+  padding: 5px 5px
+  width: $exec-result-width
+
+/* nav buttons in general */
+.nav-button
+  display: inline-block
+  padding: 5px 5px
+  border: 2px solid #ddd
+  border-radius: 35px
+  background-color: $button-bcg-color
+  box-shadow: 0px 2px 4px 0px rgba(0,0,0,0.50)
+
+
+
+/* exercise main  title css */
+.exercise-main-title
+  font-size: 40px
+  font-weight: 100
+  margin: 15px 0px 0px 10px
+
+
+
+/* container with objects and result */
+@mixin exe-box-color($color)
+  border-radius: 8px
+  border: 2px solid $color
+  background-color: #FFF
+
+
+.container-field
+  position: relative
+  float: left
+  height: $exec-field-size
+  width: $exec-field-size
+  margin-right: 5px
+  @include exe-box-color(#FF9D23)
+
+.container-field-summary
+  position: relative
+  float: left
+  height: $exe1-field-sum
+  width: $exe1-field-sum
+  margin-right: 5px
+  @include exe-box-color(#FF9D23)
+
+
+.container-field-exe2
+  position: relative
+  float: right
+  height: $exec-field-size + 50px
+  width: $exec-field-size + 50px
+  margin-top: 20px
+  margin-left: 5px
+  @include exe-box-color(#E24CFF)
+
+.container-field-exe2-summary
+  position: relative
+  float: left
+  height: $exe1-field-sum
+  width: $exe1-field-sum
+  margin: 5px 25px 5px 5px
+
+  @include exe-box-color(#E24CFF)
+
+
+@mixin user-result-common($color)
+  height: 100%
+  margin-bottom: 20px
+  padding: 10px 5px
+  text-align: center
+  @include exe-box-color($color)
+
+.user-result
+  font-size: 100px
+  margin-top: $exec-field-size/6
+  width: $exec-result-width
+  @include user-result-common(#FF9D23)
+
+
+.user-result-summary
+  font-size: 36px
+  margin-top: $exe1-field-sum/6
+  width: 70px
+  @include user-result-common(#FF9D23)
+  cursor: pointer
+
+
+.exe2-number-box
+  font-size: 100px
+  margin-top: 40px
+  width: $exec-result-width
+  @include user-result-common(#E24CFF)
+
+
+.exe2-number-box-small
+  font-size: 36px
+  margin-top: 10px
+  width: 70px
+  @include user-result-common(#E24CFF)
+
+/* require for exe1 */
+.counted-object
+  position: absolute
+  display: inline
+
+
+
+
+/* ---- Drag and drop exercise --- */
+
+.result-circle-field
+  float: left
+  padding: 5px
+  margin-top: 85px
+  margin-left: 30px
+  padding-top: 25px
+  width: 90px
+  height: 90px
+  text-align: center
+  font-size: 25px
+  font-weight: 200
+  border-radius: 48px
+  border: 1px solid #FFF
+  background: rgb(44, 137, 150)
+
+.drop-field,
+.drop-target-field
+  position: relative
+  float: left
+  height: 259px
+  width: 259px
+  margin-right: 5px
+  border-radius: 8px
+  border: 1px solid #FFF
+  background-color: rgba(255, 255, 255, 0.4)
+  z-index: 99
+
+.drop-target-field
+  z-index: 98

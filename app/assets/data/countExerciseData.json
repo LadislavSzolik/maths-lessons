@@ -1,0 +1,55 @@
+{
+    "id": 1,
+    "version": 1,
+    "numberOfElements": 20,
+    "numberOfRange": 20,
+    "exerciseContentDTO": {
+        "id": 1,
+        "version": 1,
+        "title": "Title N1a",
+        "content": "N1a"
+    },
+    "categoryDTO": {
+        "id": 1,
+        "version": 1,
+        "type": "NUMBER_OR_DIGITS"
+    },
+    "subexerciseListDTO": [
+        {
+            "number": 14
+},
+        {
+            "number": 14
+},
+        {
+            "number": 9
+},
+        {
+            "number": 10
+},
+        {
+            "number": 5
+},
+        {
+            "number": 6
+},
+        {
+            "number": 18
+},
+        {
+            "number": 14
+},
+        {
+            "number": 9
+},
+        {
+            "number": 2
+},
+        {
+            "number": 10
+},
+        {
+            "number": 11
+}
+]
+}

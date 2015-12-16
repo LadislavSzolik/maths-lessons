@@ -1,0 +1,55 @@
+{
+    "id": 1,
+    "version": 1,
+    "numberOfElements": 12,
+    "numberOfRange": 20,
+    "exerciseContentDTO": {
+        "id": 1,
+        "version": 1,
+        "title": "Title N1c",
+        "content": "N1c"
+    },
+    "categoryDTO": {
+        "id": 1,
+        "version": 1,
+        "type": "NUMBER_OR_DIGITS"
+    },
+    "subexerciseListDTO": [
+        {
+            "numberRow": [1,2,3,4,5,6]
+},
+        {
+            "numberRow": [3,4,5,6,7,8]
+},
+        {
+            "numberRow": [14,15,16,17,18,19]
+},
+        {
+            "numberRow": [10,11,12,13,14,15]
+},
+        {
+            "numberRow": [8,9,10,11,12,13]
+},
+        {
+            "numberRow": [11,12,13,14,15,16]
+},
+        {
+            "numberRow": [4,5,6,7,8,9]
+},
+        {
+            "numberRow": [15,16,17,18,19,20]
+},
+        {
+            "numberRow": [3,4,5,6,7,8]
+},
+        {
+            "numberRow": [10,11,12,13,14,15]
+},
+        {
+            "numberRow": [1,2,3,4,5,6]
+},
+        {
+            "numberRow": [8,9,10,11,12,13]
+}
+]
+}

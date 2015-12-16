@@ -1,0 +1,243 @@
+/* defined mixins */
+body {
+  font-weight: 300;
+  color: black;
+  background-color: #F2F2F2; }
+
+/* Main menu header */
+.header {
+  background-color: #56cd10; }
+
+/* container override the bootsrap defaults */
+.container {
+  width: 1000px !important;
+  padding: 5px 5px; }
+
+.title {
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-size: 40px; }
+
+a:hover {
+  text-decoration: none; }
+
+ul {
+  list-style: none;
+  padding: 0px; }
+
+.disabled {
+  background-color: #99ccff !important;
+  cursor: not-allowed; }
+
+.valid-result {
+  background-color: #55f855 !important;
+  cursor: pointer !important; }
+
+.invalid-result {
+  background-color: #ff5858 !important;
+  cursor: pointer !important; }
+
+.side-vertical-center {
+  margin-top: 175px; }
+
+.exercise-container {
+  border-radius: 8px;
+  background-color: #FFF;
+  box-shadow: 5px 5px 4px #888888;
+  text-align: center; }
+
+/* customized uib progress bar */
+.progress-bar-exe1 {
+  position: relative;
+  background-color: #FFEED6; }
+
+.progress-exe1 {
+  height: 30px;
+  background-color: white;
+  border: 2px solid #E48400; }
+
+.progress-bar-exe1 b {
+  color: #E48400;
+  font-size: 26px;
+  left: 0px;
+  position: absolute;
+  text-align: center;
+  top: 5px;
+  right: 0px;
+  width: 100%;
+  z-index: 2; }
+
+.progress-bar-exe2 {
+  background-color: #F4CBFC; }
+
+.progress-exe2 {
+  height: 30px;
+  background-color: white;
+  border: 2px solid #E24CFF; }
+
+.progress-bar-exe2 b {
+  color: #E24CFF;
+  font-size: 26px;
+  left: 0px;
+  position: absolute;
+  text-align: center;
+  top: 5px;
+  right: 0px;
+  width: 100%;
+  z-index: 2; }
+
+/* exercise close button css */
+.close-btn {
+  margin: 20px 20px 0px 0px; }
+
+/* remove btn style */
+.remove-btn {
+  display: inline-block;
+  border-radius: 10px;
+  background: #908DEB;
+  border: 3px solid #4741E8;
+  padding: 5px 5px;
+  width: 180px; }
+
+/* nav buttons in general */
+.nav-button {
+  display: inline-block;
+  padding: 5px 5px;
+  border: 2px solid #ddd;
+  border-radius: 35px;
+  background-color: #1a64ca;
+  box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.5); }
+
+/* exercise main  title css */
+.exercise-main-title {
+  font-size: 40px;
+  font-weight: 100;
+  margin: 15px 0px 0px 10px; }
+
+/* container with objects and result */
+.container-field {
+  position: relative;
+  float: left;
+  height: 350px;
+  width: 350px;
+  margin-right: 5px;
+  border-radius: 8px;
+  border: 2px solid #FF9D23;
+  background-color: #FFF; }
+
+.container-field-summary {
+  position: relative;
+  float: left;
+  height: 100px;
+  width: 100px;
+  margin-right: 5px;
+  border-radius: 8px;
+  border: 2px solid #FF9D23;
+  background-color: #FFF; }
+
+.container-field-exe2 {
+  position: relative;
+  float: right;
+  height: 400px;
+  width: 400px;
+  margin-top: 20px;
+  margin-left: 5px;
+  border-radius: 8px;
+  border: 2px solid #E24CFF;
+  background-color: #FFF; }
+
+.container-field-exe2-summary {
+  position: relative;
+  float: left;
+  height: 100px;
+  width: 100px;
+  margin: 5px 25px 5px 5px;
+  border-radius: 8px;
+  border: 2px solid #E24CFF;
+  background-color: #FFF; }
+
+.user-result {
+  font-size: 100px;
+  margin-top: 58.33333px;
+  width: 180px;
+  height: 100%;
+  margin-bottom: 20px;
+  padding: 10px 5px;
+  text-align: center;
+  border-radius: 8px;
+  border: 2px solid #FF9D23;
+  background-color: #FFF; }
+
+.user-result-summary {
+  font-size: 36px;
+  margin-top: 16.66667px;
+  width: 70px;
+  height: 100%;
+  margin-bottom: 20px;
+  padding: 10px 5px;
+  text-align: center;
+  border-radius: 8px;
+  border: 2px solid #FF9D23;
+  background-color: #FFF;
+  cursor: pointer; }
+
+.exe2-number-box {
+  font-size: 100px;
+  margin-top: 40px;
+  width: 180px;
+  height: 100%;
+  margin-bottom: 20px;
+  padding: 10px 5px;
+  text-align: center;
+  border-radius: 8px;
+  border: 2px solid #E24CFF;
+  background-color: #FFF; }
+
+.exe2-number-box-small {
+  font-size: 36px;
+  margin-top: 10px;
+  width: 70px;
+  height: 100%;
+  margin-bottom: 20px;
+  padding: 10px 5px;
+  text-align: center;
+  border-radius: 8px;
+  border: 2px solid #E24CFF;
+  background-color: #FFF; }
+
+/* require for exe1 */
+.counted-object {
+  position: absolute;
+  display: inline; }
+
+/* ---- Drag and drop exercise --- */
+.result-circle-field {
+  float: left;
+  padding: 5px;
+  margin-top: 85px;
+  margin-left: 30px;
+  padding-top: 25px;
+  width: 90px;
+  height: 90px;
+  text-align: center;
+  font-size: 25px;
+  font-weight: 200;
+  border-radius: 48px;
+  border: 1px solid #FFF;
+  background: #2c8996; }
+
+.drop-field,
+.drop-target-field {
+  position: relative;
+  float: left;
+  height: 259px;
+  width: 259px;
+  margin-right: 5px;
+  border-radius: 8px;
+  border: 1px solid #FFF;
+  background-color: rgba(255, 255, 255, 0.4);
+  z-index: 99; }
+
+.drop-target-field {
+  z-index: 98; }
+
+/*# sourceMappingURL=app.css.map */

@@ -1,0 +1,87 @@
+<div class="container">
+
+  <div class="exercise-container">
+
+    <!-- close button the same for all -->
+    <ng-include src="'template/navigation/close.html'"></ng-include>
+
+    <div class="exercise-main-title">{{allTexts.exe3TitleText}}</div>
+
+    <!-- Warning: change class and type -->
+    <div class="row" style="margin: 5px 0px;">
+      <div class="col-lg-7 col-lg-offset-2 col-md-7 col-md-offset-2 col-xs-7 col-xs-offset-2" style="margin-top: 15px;">
+        <uib-progressbar class="progress progress-exe2" type="exe2" value="currentPage*onePercentage">
+          <b>{{currentPage}}/{{totalItems}}</b>
+        </uib-progressbar>
+      </div>
+      <div class="col-lg-1 col-md-1 col-xs-1">
+        <ng-include src="'template/navigation/reload.html'"></ng-include>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-2 col-md-2 col-xs-2">
+        <ng-include src="'template/navigation/nav_before.html'"></ng-include>
+      </div>
+
+      <div class="col-lg-8 col-md-8 col-xs-8" style="height:480px;background: #F4CBFC;border: 3px solid #E24CFF;border-radius: 10px;padding:15px;">
+        <ul>
+          <li ng-if="isCurrentExercise($index)" ng-repeat="subExercise in countExerciseData">
+            <div ng-if="isSummaryActive && $index==0">
+              <ul>
+                <li ng-controller="exe2Summary as exe2Summary" ng-if="$index!==0" ng-repeat="summary in $parent.countExerciseData">
+                  <a href ng-click="selectPage($index+1,$event)">
+                    <div style="float:left; margin:0% 1% 0% 1%">
+                      <input class="form-control exe2-number-box-small" disabled style="background-color: #FBF168 !important;" type="text" value="{{summary.expectedResult}}"/>
+                    </div>
+                    <div class="container-field-exe2-summary" ng-class="summary.resultStyle">
+                      <div class="counted-object" ng-repeat="pos in exe2Summary.positionArray" ng-show="exe2Summary.isAdded(pos)" ng-style="{{pos}}" style="cursor:pointer;">
+                        <img height="{{exe2Summary.elementSize}}" ng-src="{{exe2Summary.imgUrl}}"/>
+                      </div>
+                    </div>
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+            <div ng-controller="exe2Ctrl as exe2Ctrl" ng-if="!isSummaryActive || $index !== 0">
+              <div class="row" style="margin:auto;">
+                <div class="container-field-exe2" ng-class="getResultColor($index+1)">
+                  <div class="counted-object" ng-click="exe2Ctrl.hide(pos)" ng-repeat="pos in exe2Ctrl.positionArray" ng-show="exe2Ctrl.isAdded(pos)" ng-style="{{pos}}" style="cursor:pointer;">
+                    <img height="{{exe2Ctrl.elementSize}}" ng-src="{{exe2Ctrl.imgUrl}}"/>
+                  </div>
+                </div>
+                <div style="float:right; margin-right:5%">
+                  <input class="form-control exe2-number-box" disabled style="background-color: #FBF168 !important;" type="text" value="{{subExercise.expectedResult}}"/>
+                  <div class="exe2-number-box" style="position:relative; height:150px;margin-top:50px">
+                    <a href ng-click="exe2Ctrl.addObject()">
+                      <div class="counted-object" style="top:60px; left:110px;">
+                        <img height="66px" ng-src="{{exe2Ctrl.imgUrl}}"/>
+                      </div>
+                      <div class="counted-object" style="top:60px; left:0px;">
+                        <img height="66px" ng-src="{{exe2Ctrl.imgUrl}}"/>
+                      </div>
+                      <div class="counted-object" style="top:10px; left:30px;">
+                        <img height="120px" ng-src="{{exe2Ctrl.imgUrl}}"/>
+                      </div>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="col-lg-2 col-md-2 col-xs-2">
+        <ng-include src="'template/navigation/nav_next.html'"></ng-include>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-2 col-lg-offset-10 col-md-2 col-md-offset-10 col-xs-2 col-xs-offset-10" style="margin-bottom:20px;margin-top:-60px">
+        <ng-include src="'template/navigation/check_result.html'"></ng-include>
+      </div>
+    </div>
+  </div>
+</div>

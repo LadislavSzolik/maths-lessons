@@ -1,0 +1,362 @@
+[
+    {
+        "id": 1,
+        "version": 1,
+        "type": "NUMBER_OR_DIGITS",
+        "categoryContentDTO": {
+            "id": 1,
+            "version": 1,
+            "title": "Number & Digits"
+        },
+        "exerciseListDTO": [
+            {
+                "id": 1,
+                "version": 1,
+                "exerciseContentDTO": {
+                    "id": 1,
+                    "version": 1,
+                    "title": "Title N1a",
+                    "content": "N1a"
+                }
+},
+            {
+                "id": 2,
+                "version": 1,
+                "exerciseContentDTO": {
+                    "id": 2,
+                    "version": 1,
+                    "title": "Title N1b",
+                    "content": "N1b"
+                }
+},
+            {
+                "id": 3,
+                "version": 1,
+                "exerciseContentDTO": {
+                    "id": 3,
+                    "version": 1,
+                    "title": "Title N1c",
+                    "content": "N1c"
+                }
+},
+            {
+                "id": 4,
+                "version": 1,
+                "exerciseContentDTO": {
+                    "id": 4,
+                    "version": 1,
+                    "title": "Title 1d",
+                    "content": "N1d"
+                }
+},
+            {
+                "id": 5,
+                "version": 1,
+                "exerciseContentDTO": {
+                    "id": 5,
+                    "version": 1,
+                    "title": "Title N2a",
+                    "content": "N2a"
+                }
+},
+            {
+                "id": 6,
+                "version": 1,
+                "exerciseContentDTO": {
+                    "id": 6,
+                    "version": 1,
+                    "title": "Title N2b",
+                    "content": "N2b"
+                }
+}
+]
+},
+    {
+        "id": 2,
+        "version": 1,
+        "type": "PLUS_OR_MINUS",
+        "categoryContentDTO": {
+            "id": 2,
+            "version": 1,
+            "title": "Plus & Minus"
+        },
+        "exerciseListDTO": [
+            {
+                "id": 7,
+                "version": 1,
+                "exerciseContentDTO": {
+                    "id": 7,
+                    "version": 1,
+                    "title": "Title P1a",
+                    "content": "P1a"
+                }
+},
+            {
+                "id": 8,
+                "version": 1,
+                "exerciseContentDTO": {
+                    "id": 8,
+                    "version": 1,
+                    "title": "Title P1b",
+                    "content": "P1b"
+                }
+},
+            {
+                "id": 9,
+                "version": 1,
+                "exerciseContentDTO": {
+                    "id": 9,
+                    "version": 1,
+                    "title": "Title P1c",
+                    "content": "P1c"
+                }
+},
+            {
+                "id": 10,
+                "version": 1,
+                "exerciseContentDTO": {
+                    "id": 10,
+                    "version": 1,
+                    "title": "Title P1d",
+                    "content": "P1d"
+                }
+},
+            {
+                "id": 11,
+                "version": 1,
+                "exerciseContentDTO": {
+                    "id": 11,
+                    "version": 1,
+                    "title": "Title P2a",
+                    "content": "P2a"
+                }
+},
+            {
+                "id": 12,
+                "version": 1,
+                "exerciseContentDTO": {
+                    "id": 12,
+                    "version": 1,
+                    "title": "Title P2b",
+                    "content": "P2b"
+                }
+}
+]
+},
+    {
+        "id": 3,
+        "version": 1,
+        "type": "MULTIPLY_OR_DEVIDE",
+        "categoryContentDTO": {
+            "id": 3,
+            "version": 1,
+            "title": "Multiply & Devide"
+        },
+        "exerciseListDTO": [
+            {
+                "id": 13,
+                "version": 1,
+                "exerciseContentDTO": {
+                    "id": 13,
+                    "version": 1,
+                    "title": "Title M1a",
+                    "content": "M1a"
+                }
+},
+            {
+                "id": 14,
+                "version": 1,
+                "exerciseContentDTO": {
+                    "id": 14,
+                    "version": 1,
+                    "title": "Title M1b",
+                    "content": "M1b"
+                }
+},
+            {
+                "id": 15,
+                "version": 1,
+                "exerciseContentDTO": {
+                    "id": 15,
+                    "version": 1,
+                    "title": "Title M1c",
+                    "content": "M1c"
+                }
+},
+            {
+                "id": 16,
+                "version": 1,
+                "exerciseContentDTO": {
+                    "id": 16,
+                    "version": 1,
+                    "title": "Title M1d",
+                    "content": "M1d"
+                }
+},
+            {
+                "id": 17,
+                "version": 1,
+                "exerciseContentDTO": {
+                    "id": 17,
+                    "version": 1,
+                    "title": "Title M2a",
+                    "content": "M2a"
+                }
+},
+            {
+                "id": 18,
+                "version": 1,
+                "exerciseContentDTO": {
+                    "id": 18,
+                    "version": 1,
+                    "title": "Title M2b",
+                    "content": "M2b"
+                }
+}
+]
+},
+    {
+        "id": 4,
+        "version": 1,
+        "type": "UNITS",
+        "categoryContentDTO": {
+            "id": 4,
+            "version": 1,
+            "title": "Unit"
+        },
+        "exerciseListDTO": [
+            {
+                "id": 19,
+                "version": 1,
+                "exerciseContentDTO": {
+                    "id": 19,
+                    "version": 1,
+                    "title": "Title U1a",
+                    "content": "U1a"
+                }
+},
+            {
+                "id": 20,
+                "version": 1,
+                "exerciseContentDTO": {
+                    "id": 20,
+                    "version": 1,
+                    "title": "Title U1b",
+                    "content": "U1b"
+                }
+},
+            {
+                "id": 21,
+                "version": 1,
+                "exerciseContentDTO": {
+                    "id": 21,
+                    "version": 1,
+                    "title": "Title U1c",
+                    "content": "U1c"
+                }
+},
+            {
+                "id": 22,
+                "version": 1,
+                "exerciseContentDTO": {
+                    "id": 22,
+                    "version": 1,
+                    "title": "Title U1d",
+                    "content": "U1d"
+                }
+},
+            {
+                "id": 23,
+                "version": 1,
+                "exerciseContentDTO": {
+                    "id": 23,
+                    "version": 1,
+                    "title": "Title U2a",
+                    "content": "U2a"
+                }
+},
+            {
+                "id": 24,
+                "version": 1,
+                "exerciseContentDTO": {
+                    "id": 24,
+                    "version": 1,
+                    "title": "Title U2b",
+                    "content": "U2b"
+                }
+}
+]
+},
+    {
+        "id": 5,
+        "version": 1,
+        "type": "GEOMETRY",
+        "categoryContentDTO": {
+            "id": 4,
+            "version": 1,
+            "title": "Geometry"
+        },
+        "exerciseListDTO": [
+            {
+                "id": 19,
+                "version": 1,
+                "exerciseContentDTO": {
+                    "id": 19,
+                    "version": 1,
+                    "title": "Title G1a",
+                    "content": "G1a"
+                }
+},
+            {
+                "id": 20,
+                "version": 1,
+                "exerciseContentDTO": {
+                    "id": 20,
+                    "version": 1,
+                    "title": "Title G1b",
+                    "content": "G1b"
+                }
+},
+            {
+                "id": 21,
+                "version": 1,
+                "exerciseContentDTO": {
+                    "id": 21,
+                    "version": 1,
+                    "title": "Title G1c",
+                    "content": "G1c"
+                }
+},
+            {
+                "id": 22,
+                "version": 1,
+                "exerciseContentDTO": {
+                    "id": 22,
+                    "version": 1,
+                    "title": "Title G1d",
+                    "content": "G1d"
+                }
+},
+            {
+                "id": 23,
+                "version": 1,
+                "exerciseContentDTO": {
+                    "id": 23,
+                    "version": 1,
+                    "title": "Title G2a",
+                    "content": "G2a"
+                }
+},
+            {
+                "id": 24,
+                "version": 1,
+                "exerciseContentDTO": {
+                    "id": 24,
+                    "version": 1,
+                    "title": "Title G2b",
+                    "content": "G2b"
+                }
+}
+]
+}
+]

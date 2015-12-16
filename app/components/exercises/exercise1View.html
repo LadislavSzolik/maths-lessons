@@ -1,0 +1,96 @@
+<div class="container">
+
+  <div class="exercise-container">
+
+    <!-- close button the same for all -->
+    <ng-include src="'template/navigation/close.html'"></ng-include>
+
+    <div class="exercise-main-title">{{allTexts.countExericseTitleText}}</div>
+
+    <!-- Warning: change class and type -->
+    <div class="row" style="text-align:center">
+      <div style="margin-top:15px; width:550px; display:inline-block; ">
+        <uib-progressbar class="progress progress-exe1" type="exe1" value="currentPage*onePercentage">
+          <b>{{currentPage}}/{{totalItems}}</b>
+        </uib-progressbar>
+      
+        <ng-include src="'template/navigation/reload.html'"></ng-include>
+      </div>
+    </div>
+
+    <!--
+    <div class="col-lg-7 col-lg-offset-2 col-md-7 col-md-offset-2 col-xs-7 col-xs-offset-2" style="padding-left:65px; padding-rigth:0px;margin-top: 15px;">
+      <uib-progressbar class="progress progress-exe1" type="exe1" value="currentPage*onePercentage">
+        <b>{{currentPage}}/{{totalItems}}</b>
+      </uib-progressbar>
+    </div>
+    <div class="col-lg-1 col-md-1 col-xs-1" style="padding:0px">
+      <ng-include src="'template/navigation/reload.html'"></ng-include>
+    </div>
+
+  -->
+
+    <div class="row">
+      <div class="col-lg-2 col-md-2 col-xs-2">
+        <ng-include src="'template/navigation/nav_before.html'"></ng-include>
+      </div>
+
+      <div class="col-lg-8 col-md-8 col-xs-8" style="width:680px; height:480px; border-radius: 10px; padding:15px;   background-image: url(/app/assets/img/exe1_bcg.png);">
+        <ul>
+          <li ng-if="isCurrentExercise($index)" ng-repeat="subExercise in countExerciseData">
+            <div ng-if="isSummaryActive && $index==0">
+
+              <ul>
+                <li ng-controller="exe1Summary as exe1Summary" ng-if="$index!==0" ng-repeat="summary in $parent.countExerciseData">
+                  <a href ng-click="selectPage($index+1,$event)">
+                    <div class="container-field-summary">
+                      <div class="counted-object" ng-repeat="pos in exe1Summary.positionArray" ng-style="{{pos}}">
+                        <img height="{{exe1Summary.elementSize}}" ng-src="{{exe1Summary.imgUrl}}"/>
+                      </div>
+                    </div>
+                    <div style="float:left; margin:0% 4% 0% 1%">
+                      <input class="form-control user-result-summary" disabled ng-class="summary.resultStyle" type="text" value="{{exe1Summary.userInput}}"/>
+                    </div>
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+            <div ng-controller="exe1Ctrl as exe1Ctrl" ng-if="!isSummaryActive || $index !== 0">
+              <div class="row" style="margin:auto;">
+                <div class="container-field">
+
+                  <div class="counted-object" ng-repeat="pos in exe1Ctrl.positionArray" ng-style="{{pos}}">
+                    <img height="{{exe1Ctrl.elementSize}}" ng-src="{{exe1Ctrl.imgUrl}}"/>
+                  </div>
+                </div>
+                <div style="float:left; margin-left:7%">
+                  <input class="form-control user-result" maxlength="2" ng-change="exe1Ctrl.changeInput()" ng-class="getResultColor($index+1)" ng-disabled="isSummaryActive" ng-model="exe1Ctrl.userInput" placeholder="?" required="" type="text"/>
+                  <a class="remove-btn" href ng-click="exe1Ctrl.backspace()">
+                    <ng-md-icon icon="backspace" size="36" style="fill:white"></a>
+                  </div>
+                </div>
+                <div class="row" style="margin-top:2%">
+                  <ul>
+                    <li ng-repeat="key in [0,1,2,3,4,5,6,7,8,9]" style="display:inline-block; ">
+                      <input ng-click="exe1Ctrl.setUserInput($index)" ng-disabled="isSummaryActive" ng-style="exe1Ctrl.getNumberStyle($index)" style="font-size:48px; font-weight: bold; padding: 0px 12px; margin: 0px 4px; color:white;box-shadow: 0px 2px 4px 0px rgba(0,0,0,0.50)" type="button" value="{{key}}"/>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <div class="col-lg-2 col-md-2 col-xs-2">
+          <ng-include src="'template/navigation/nav_next.html'"></ng-include>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-lg-2 col-lg-offset-10 col-md-2 col-md-offset-10 col-xs-2 col-xs-offset-10" style="margin-bottom:20px;margin-top:-60px">
+          <ng-include src="'template/navigation/check_result.html'"></ng-include>
+        </div>
+      </div>
+    </div>
+  </div>
