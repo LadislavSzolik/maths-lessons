@@ -12,18 +12,18 @@ $invalid-result-color: rgb(255, 88, 88)
 @mixin progress-bar-text($color)
   color: $color
   font-size: 26px
-  left: 0px
   position: absolute
   text-align: center
-  top: 5px
-  right: 0px
+  top: 4px
   width: 100%
   z-index: 2
+  left: 0px
 
 @mixin progress($color)
   height: 30px
   background-color: white
   border: 2px solid $color
+  position: relative
 
 body
   font-weight: 300
@@ -77,12 +77,26 @@ ul
 
 /* customized uib progress bar */
 
-.progress-bar-exe1
+.progess-container
+  margin-top: 15px
   position: relative
+
+.progress-box
+  width: 500px
+  display: inline-block
+
+.reload-container
+  display: inline-block
+  position: absolute
+  margin-top: -12px
+  margin-left: 15px
+
+.progress-bar-exe1
   background-color: #FFEED6
 
 .progress-exe1
   @include progress(#E48400)
+
 
 .progress-bar-exe1 b
   @include progress-bar-text(#E48400)
@@ -136,6 +150,12 @@ ul
   border: 2px solid $color
   background-color: #FFF
 
+.container-box
+  width: 680px
+  height: 480px
+  border-radius: 10px
+  padding: 15px
+  background-image: url(../img/exe1_bcg.png)
 
 .container-field
   position: relative
@@ -180,6 +200,10 @@ ul
   text-align: center
   @include exe-box-color($color)
 
+.user-result-container
+  float: left
+  margin: 0% 4% 0% 1%
+
 .user-result
   font-size: 100px
   margin-top: $exec-field-size/6
@@ -213,7 +237,16 @@ ul
   position: absolute
   display: inline
 
+.input-number-row-li
+  display: inline-block
 
+.input-number-row
+  font-size: 48px
+  font-weight: bold
+  padding: 0px 13px
+  margin: 0px 4px
+  color: white
+  box-shadow: 0px 2px 4px 0px rgba(0,0,0,0.50)
 
 
 /* ---- Drag and drop exercise --- */
