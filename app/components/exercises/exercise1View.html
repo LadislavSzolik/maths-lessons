@@ -38,7 +38,7 @@
                         <img height="{{exe1Summary.elementSize}}" ng-src="{{exe1Summary.imgUrl}}"/>
                       </div>
                     </div>
-                    <div class="user-result-container">
+                    <div class="user-result-summary-container">
                       <input class="form-control user-result-summary" disabled ng-class="summary.resultStyle" type="text" value="{{exe1Summary.userInput}}"/>
                     </div>
                   </a>
@@ -54,13 +54,13 @@
                     <img height="{{exe1Ctrl.elementSize}}" ng-src="{{exe1Ctrl.imgUrl}}"/>
                   </div>
                 </div>
-                <div style="float:left; margin-left:7%">
+                <div class="user-result-container">
                   <input class="form-control user-result" maxlength="2" ng-change="exe1Ctrl.changeInput()" ng-class="getResultColor($index+1)" ng-disabled="isSummaryActive" ng-model="exe1Ctrl.userInput" placeholder="?" required="" type="text"/>
                   <a class="remove-btn" href ng-click="exe1Ctrl.backspace()">
                     <ng-md-icon icon="backspace" size="36" style="fill:white"></a>
                   </div>
                 </div>
-                <div class="row" style="margin-top:2%">
+                <div class="row number-row-container" >
                   <ul>
                     <li ng-repeat="key in [0,1,2,3,4,5,6,7,8,9]" class="input-number-row-li">
                       <input ng-click="exe1Ctrl.setUserInput($index)" ng-disabled="isSummaryActive" class="input-number-row" ng-style="exe1Ctrl.getNumberStyle($index)"  type="button" value="{{key}}"/>
