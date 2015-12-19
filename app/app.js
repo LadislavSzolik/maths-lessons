@@ -56,30 +56,30 @@ var mathApp = angular.module('mathApp', ['ngMdIcons', 'ui.bootstrap', 'ngRoute',
 mathApp.run(["$templateCache", function($templateCache) {
   $templateCache.put("template/navigation/close.html",
     "<div class=\"pull-right close-btn\"> \n" +
-    "    <a ng-click=\"exit()\" class=\"nav-button\" href>\n" +
+    "    <a ng-click=\"exit()\" class=\"nav-btn\" href>\n" +
     "        <ng-md-icon icon=\"close\" style=\"fill:white\" size=\"36\">\n" +
     "    </a>\n" +
     "</div>\n" +
     "");
 
   $templateCache.put("template/navigation/reload.html",
-    "<a href ng-click=\"reload()\" class=\"nav-button\">\n" +
+    "<a href ng-click=\"reload()\" class=\"nav-btn\">\n" +
     "    <ng-md-icon icon=\"refresh\" style=\"fill:white\" size=\"36\">\n" +
     "</a>\n" +
     "");
 
   $templateCache.put("template/navigation/nav_before.html",
-    "<a href class=\"nav-button side-vertical-center\" ng-class=\"{disabled:noPrevious()}\" ng-click=\"selectPage(currentPage-1,$event)\">\n" +
+    "<a href class=\"nav-btn side-vertical-center\" ng-class=\"{disabled:noPrevious()}\" ng-click=\"selectPage(currentPage-1,$event)\">\n" +
     "  <ng-md-icon icon=\"navigate_before\" style=\"fill:white\" size=\"48\">\n" +
     "<\/a>" +
     "");
   $templateCache.put("template/navigation/nav_next.html",
-    "<a href class=\"nav-button side-vertical-center\" ng-class=\"{disabled:noNext()}\" ng-click=\"selectPage(currentPage+1,$event)\">\n" +
+    "<a href class=\"nav-btn side-vertical-center\" ng-class=\"{disabled:noNext()}\" ng-click=\"selectPage(currentPage+1,$event)\">\n" +
     "  <ng-md-icon icon=\"navigate_next\" style=\"fill:white\" size=\"48\">\n " +
     "<\/a>");
 
   $templateCache.put("template/navigation/check_result.html",
-    "<a href ng-click=\"checkResult()\" class=\"nav-button\" ng-class=\"{disabled:isSummaryActive}\">\n"+
+    "<a href ng-click=\"checkResult()\" class=\"nav-btn\" ng-class=\"{disabled:isSummaryActive}\">\n"+
     "<ng-md-icon icon=\"done_all\" style=\"fill:white\" size=\"48\">\n"+
     "<\/a>"+
     "");

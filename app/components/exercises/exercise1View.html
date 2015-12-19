@@ -1,31 +1,34 @@
-<div class="container">
+<div class="exercise-container">
+  <header>
+    <a class="nav-btn help-btn" href >
+      ?
+    </a>
+    <a class="nav-btn close-btn" href ng-click="exit()">
+      <ng-md-icon icon="close" size="36" style="fill:white"/>
+    </a>
+    <h1>{{allTexts.countExericseTitleText}}</h1>
+  </header>
 
-  <div class="exercise-container">
+  <section class="progess-container">
+    <uib-progressbar class="progress-box progress-color-exe1" type="exe1" value="currentPage*onePercentage">
+      <b>{{currentPage}}/{{totalItems}}</b>
+    </uib-progressbar>
 
-    <!-- close button the same for all -->
-    <ng-include src="'template/navigation/close.html'"></ng-include>
+    <a class="nav-btn reload-btn" href ng-click="reload()">
+      <ng-md-icon icon="refresh" size="36" style="fill:white"/>
+    </a>
+  </section>
 
-    <div class="exercise-main-title">{{allTexts.countExericseTitleText}}</div>
+  <section >
+    <a class="nav-btn side-top-btn left-nav-btn" href ng-class="{disabled:noPrevious()}" ng-click="selectPage(currentPage-1,$event)">
+      <ng-md-icon icon="navigate_before" size="48" style="fill:white"/>
+    </a>
 
-    <!-- Warning: change class and type -->
-    <div class="row progess-container" >
-      <div class="progress-box">
-        <uib-progressbar class="progress progress-exe1" type="exe1" value="currentPage*onePercentage">
-          <b>{{currentPage}}/{{totalItems}}</b>
-        </uib-progressbar>
-      </div>
-      <div class="reload-container" >
-        <ng-include src="'template/navigation/reload.html'"></ng-include>
-      </div>
-    </div>
+    <a class="nav-btn left-nav-btn side-bottom-btn hide" href ng-class="{show:isSummaryActive}" ng-click="currentPage = 1">
+      <ng-md-icon icon="apps" size="48" style="fill:white"/>
+    </a>
 
-
-    <div class="row">
-      <div class="col-lg-2 col-md-2 col-xs-2">
-        <ng-include src="'template/navigation/nav_before.html'"></ng-include>
-      </div>
-
-      <div class="col-lg-8 col-md-8 col-xs-8 container-box" >
+      <div class="subexe-container-box">
         <ul>
           <li ng-if="isCurrentExercise($index)" ng-repeat="subExercise in countExerciseData">
             <div ng-if="isSummaryActive && $index==0">
@@ -57,30 +60,26 @@
                 <div class="user-result-container">
                   <input class="form-control user-result" maxlength="2" ng-change="exe1Ctrl.changeInput()" ng-class="getResultColor($index+1)" ng-disabled="isSummaryActive" ng-model="exe1Ctrl.userInput" placeholder="?" required="" type="text"/>
                   <a class="remove-btn" href ng-click="exe1Ctrl.backspace()">
-                    <ng-md-icon icon="backspace" size="36" style="fill:white"></a>
-                  </div>
-                </div>
-                <div class="row number-row-container" >
-                  <ul>
-                    <li ng-repeat="key in [0,1,2,3,4,5,6,7,8,9]" class="input-number-row-li">
-                      <input ng-click="exe1Ctrl.setUserInput($index)" ng-disabled="isSummaryActive" class="input-number-row" ng-style="exe1Ctrl.getNumberStyle($index)"  type="button" value="{{key}}"/>
-                    </li>
-                  </ul>
+                    <ng-md-icon icon="backspace" size="36" style="fill:white"/>
+                  </a>
                 </div>
               </div>
-            </li>
-          </ul>
-        </div>
-
-        <div class="col-lg-2 col-md-2 col-xs-2">
-          <ng-include src="'template/navigation/nav_next.html'"></ng-include>
-        </div>
+              <div class="clearfix number-row-container">
+                <ul>
+                  <li class="input-number-row-li" ng-repeat="key in [0,1,2,3,4,5,6,7,8,9]">
+                    <input class="input-number-row" ng-click="exe1Ctrl.setUserInput($index)" ng-disabled="isSummaryActive" ng-style="exe1Ctrl.getNumberStyle($index)" type="button" value="{{key}}"/>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </li>
+        </ul>
       </div>
-
-      <div class="row">
-        <div class="col-lg-2 col-lg-offset-10 col-md-2 col-md-offset-10 col-xs-2 col-xs-offset-10" style="margin-bottom:20px;margin-top:-60px">
-          <ng-include src="'template/navigation/check_result.html'"></ng-include>
-        </div>
-      </div>
-    </div>
+      <a class="nav-btn side-top-btn right-nav-btn" href ng-class="{disabled:noNext()}" ng-click="selectPage(currentPage+1,$event)">
+        <ng-md-icon icon="navigate_next" size="48" style="fill:white"/>
+      </a>
+      <a class="nav-btn right-nav-btn side-bottom-btn" href ng-class="{disabled:isSummaryActive}" ng-click="checkResult()">
+        <ng-md-icon icon="done_all" size="48" style="fill:white"/>
+      </a>
+    </section>
   </div>
