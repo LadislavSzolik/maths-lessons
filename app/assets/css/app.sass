@@ -121,12 +121,10 @@ ul
 
 /* remove btn style */
 .remove-btn
-  display: inline-block
-  border-radius: 10px
-  background: #908DEB
-  border: 3px solid #4741E8
-  padding: 5px 5px
-  width: $exec-result-width
+  position: absolute
+  top: 30px
+  right: 20px
+
 
 /* nav buttons in general */
 
@@ -172,6 +170,7 @@ ul
   padding: 15px
   background-image: url(../img/exe1_bcg.png)
   margin: auto
+  position: relative
 
 .container-field
   position: relative
@@ -221,8 +220,10 @@ ul
   margin: 0% 5% 0% 1%
 
 .user-result
+  float: left
+  margin-left: 7%
   font-size: 100px
-  margin-top: $exec-field-size/6
+  margin-top: $exec-field-size/4
   width: $exec-result-width
   @include user-result-common(#FF9D23)
 
@@ -233,10 +234,6 @@ ul
   width: 70px
   @include user-result-common(#FF9D23)
   cursor: pointer
-
-.user-result-container
-  float: left
-  margin-left: 7%
 
 .exe2-number-box
   font-size: 100px
@@ -253,8 +250,7 @@ ul
 
 /* require for exe1 */
 .counted-object
-  position: absolute
-  display: inline
+  position: absolute  
 
 .number-row-container
   margin-top: 2%

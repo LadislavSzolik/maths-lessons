@@ -131,12 +131,9 @@ ul {
 
 /* remove btn style */
 .remove-btn {
-  display: inline-block;
-  border-radius: 10px;
-  background: #908DEB;
-  border: 3px solid #4741E8;
-  padding: 5px 5px;
-  width: 180px;
+  position: absolute;
+  top: 30px;
+  right: 20px;
 }
 
 /* nav buttons in general */
@@ -181,6 +178,7 @@ ul {
   padding: 15px;
   background-image: url(../img/exe1_bcg.png);
   margin: auto;
+  position: relative;
 }
 
 .container-field {
@@ -234,8 +232,10 @@ ul {
 }
 
 .user-result {
+  float: left;
+  margin-left: 7%;
   font-size: 100px;
-  margin-top: 58.33333px;
+  margin-top: 87.5px;
   width: 180px;
   height: 100%;
   margin-bottom: 20px;
@@ -258,11 +258,6 @@ ul {
   border: 2px solid #FF9D23;
   background-color: #FFF;
   cursor: pointer;
-}
-
-.user-result-container {
-  float: left;
-  margin-left: 7%;
 }
 
 .exe2-number-box {
@@ -294,7 +289,6 @@ ul {
 /* require for exe1 */
 .counted-object {
   position: absolute;
-  display: inline;
 }
 
 .number-row-container {
