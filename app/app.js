@@ -14,17 +14,20 @@ var mathApp = angular.module('mathApp', ['ngMdIcons', 'ui.bootstrap', 'ngRoute',
       }).when('/N1a', {
         templateUrl: 'app/components/exercises/exercise1View.html',
         controller: 'exerciseMainCtrl',
+        exetype: 'N1a',
         resolve: {
           'countExerciseServiceData': function(exerciseService) {
             return exerciseService.dataLoadPromise;
           },
           allTexts: ['textService', function(textService) {
             return textService.getAllTexts();
-          }],
+          }]
+
         }
       }).when('/N1b', {
-        templateUrl: 'app/components/exercises/exercise2View.html',
+        templateUrl: 'app/components/exercises/exercise1View.html',
         controller: 'exerciseMainCtrl',
+        exetype: 'N1b',
         resolve: {
           'countExerciseServiceData': function(exerciseService) {
             return exerciseService.dataLoadPromise;

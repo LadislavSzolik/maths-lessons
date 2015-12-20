@@ -1,3 +1,13 @@
+a:link, a:visited, a:hover, a:active {
+  text-decoration: none;
+  color: white;
+}
+
+ul {
+  list-style: none;
+  padding: 0px;
+}
+
 body {
   font-weight: 300;
   color: black;
@@ -13,19 +23,58 @@ header, section {
   position: relative;
 }
 
-h1 {
+.nav-btn, .nav-btn-close, .nav-btn-help, .nav-btn-reload, .nav-btn-top-left, .nav-btn-top-right, .nav-btn-bottom-left, .nav-btn-bottom-right {
+  float: left;
+  padding: 5px 5px;
+  border-radius: 35px;
+  color: white;
+  background-color: #3E7AD0;
+  box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.5);
+  position: absolute;
+}
+
+.nav-btn-close {
+  top: -10px;
+  right: 10px;
+}
+
+.nav-btn-help {
+  width: 50px;
+  height: 50px;
+  font-size: 28px;
+  font-weight: bold;
+  left: 20px;
+  top: -10px;
+}
+
+.nav-btn-reload {
+  top: -12px;
+  left: 775px;
+}
+
+.nav-btn-top-left {
+  top: 175px;
+  left: 50px;
+}
+
+.nav-btn-top-right {
+  top: 175px;
+  right: 50px;
+}
+
+.nav-btn-bottom-left {
+  left: 50px;
+  bottom: 0px;
+}
+
+.nav-btn-bottom-right {
+  right: 50px;
+  bottom: 0px;
+}
+
+.exe-header h1 {
   font-family: "Helvetica Neue", Arial, sans-serif;
   font-size: 40px;
-}
-
-a:link, a:visited, a:hover, a:active {
-  text-decoration: none;
-  color: white;
-}
-
-ul {
-  list-style: none;
-  padding: 0px;
 }
 
 .disabled {
@@ -60,7 +109,7 @@ ul {
   margin-top: 25px;
 }
 
-.progress-box {
+.progess-container .progress-box {
   width: 500px;
   display: inline-block;
   height: 30px;
@@ -68,29 +117,11 @@ ul {
   position: relative;
 }
 
-.reload-btn {
-  margin-top: -12px;
-  margin-left: 15px;
-}
-
-/* progress bar color */
-.progress-bar-exe1 {
+.progess-container .progress-bar-exe1 {
   background-color: #FFEED6;
 }
 
-.progress-color-exe1 {
-  border: 2px solid #E48400;
-}
-
-.progress-bar-exe2 {
-  background-color: #F4CBFC;
-}
-
-.progress-color-exe2 {
-  border: 2px solid #E24CFF;
-}
-
-.progress-bar-exe1 b {
+.progess-container .progress-bar-exe1 b {
   color: #E48400;
   font-size: 26px;
   position: absolute;
@@ -101,7 +132,15 @@ ul {
   left: 0px;
 }
 
-.progress-bar-exe2 b {
+.progess-container .progress-color-exe1 {
+  border: 2px solid #E48400;
+}
+
+.progess-container .progress-bar-exe2 {
+  background-color: #F4CBFC;
+}
+
+.progess-container .progress-bar-exe2 b {
   color: #E24CFF;
   font-size: 26px;
   position: absolute;
@@ -112,76 +151,21 @@ ul {
   left: 0px;
 }
 
-/* exercise close button css */
-.close-btn {
-  margin: 15px 15px 0px 0px;
-  top: -20px;
-  right: 0px;
-}
-
-.help-btn {
-  width: 50px;
-  height: 50px;
-  font-size: 26px;
-  color: white;
-  margin: 15px 15px 0px 0px;
-  left: 20px;
-  top: -20px;
-}
-
-/* remove btn style */
-.remove-btn {
-  position: absolute;
-  top: 30px;
-  right: 20px;
-}
-
-/* nav buttons in general */
-.nav-btn {
-  float: left;
-  padding: 5px 5px;
-  border: 2px solid #ddd;
-  border-radius: 35px;
-  background-color: #1a64ca;
-  box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.5);
-  position: absolute;
-}
-
-.side-top-btn {
-  top: 175px;
-}
-
-.left-nav-btn {
-  left: 50px;
-}
-
-.right-nav-btn {
-  right: 50px;
-}
-
-.side-bottom-btn {
-  bottom: 0px;
-}
-
-/* exercise main  title css */
-.exercise-main-title {
-  font-size: 40px;
-  font-weight: 100;
-  margin: 15px 0px 0px 10px;
+.progess-container .progress-color-exe2 {
+  border: 2px solid #E24CFF;
 }
 
 /* container with objects and result */
-.subexe-container-box {
+.main-content .subexe-container-box {
   width: 680px;
   height: 480px;
   border-radius: 10px;
   padding: 15px;
-  background-image: url(../img/exe1_bcg.png);
   margin: auto;
   position: relative;
 }
 
-.container-field {
+.main-content .subexe-container-box .object-arena {
   position: relative;
   float: left;
   height: 350px;
@@ -192,27 +176,37 @@ ul {
   background-color: #FFF;
 }
 
-.container-field-summary {
-  position: relative;
-  float: left;
-  height: 100px;
-  width: 100px;
-  margin-right: 5px;
+.main-content .subexe-container-box .exe2-position {
+  float: right !important;
+  margin-top: 50px;
+  margin-right: 35px;
   border-radius: 8px;
-  border: 2px solid #FF9D23;
+  border: 2px solid #7C3A78;
   background-color: #FFF;
 }
 
-.container-field-exe2 {
-  position: relative;
-  float: right;
-  height: 400px;
-  width: 400px;
-  margin-top: 20px;
-  margin-left: 5px;
-  border-radius: 8px;
-  border: 2px solid #E24CFF;
-  background-color: #FFF;
+.main-content .subexe-container-box .arena-small {
+  height: 100px !important;
+  width: 100px !important;
+}
+
+.main-content .subexe-container-box .remove-btn {
+  position: absolute;
+  top: 30px;
+  right: 20px;
+}
+
+.main-content .subexe-container-box .remove-btn-exe2-postion {
+  top: 2px !important;
+  right: 2px !important;
+}
+
+.main-content .exe1-background {
+  background-image: url(../img/exe1_bcg.png);
+}
+
+.main-content .exe2-background {
+  background-image: url(../img/exe2_bcg.png);
 }
 
 .container-field-exe2-summary {
@@ -260,17 +254,30 @@ ul {
   cursor: pointer;
 }
 
+/* EXE 2 style */
 .exe2-number-box {
-  font-size: 100px;
-  margin-top: 40px;
-  width: 180px;
-  height: 100%;
-  margin-bottom: 20px;
-  padding: 10px 5px;
+  font-size: 80px;
+  font-weight: bold;
+  top: 50px;
+  left: 68px;
+  width: 144px;
+  height: 144px;
+  border-radius: 80px;
+  border: 2px solid #7C3A78;
   text-align: center;
-  border-radius: 8px;
-  border: 2px solid #E24CFF;
-  background-color: #FFF;
+  position: absolute;
+  background-color: #E2DA97 !important;
+}
+
+.exe2-object-holder-box {
+  height: 200px;
+  width: 200px;
+  border-radius: 120px;
+  border: 2px solid #7C3A78;
+  background-color: #E2DA97;
+  position: absolute;
+  top: 260px;
+  left: 40px;
 }
 
 .exe2-number-box-small {
@@ -295,11 +302,11 @@ ul {
   margin-top: 2%;
 }
 
-.input-number-row-li {
+.number-row-container .input-number-row-li {
   display: inline-block;
 }
 
-.input-number-row {
+.number-row-container .input-number-row-li .input-number-row {
   font-size: 48px;
   font-weight: bold;
   padding: 0px 13px;

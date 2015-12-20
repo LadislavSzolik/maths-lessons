@@ -8,6 +8,7 @@ exeModule.controller('exerciseMainCtrl', ['$scope', '$location', '$route', '$roo
   $scope.allTexts = allTexts;
   $scope.currentPage = 1;
   $scope.isSummaryActive = false;
+  $scope.exetype = $route.current.exetype;
 
   var setProgressBarData = function() {
     $scope.countExerciseData = exerciseService.getAllElements();
@@ -160,11 +161,11 @@ exeModule.controller('exe2Ctrl', ['$scope', 'exerciseService', function($scope, 
 
   self.positionArray = exerciseService.getPositions();
   if (angular.isUndefined(self.positionArray) || self.positionArray.length == 0) {
-    exerciseService.setGridPoints(exerciseService.calculateGridPoints(25, 380));
-    self.positionArray = exerciseService.addPositionsToElement(index, 380);
+    exerciseService.setGridPoints(exerciseService.calculateGridPoints(25, 330));
+    self.positionArray = exerciseService.addPositionsToElement(index, 330);
     exerciseService.savePositions(self.positionArray);
   }
-  self.elementSize = exerciseService.getElementSizeForFrameSize(380);
+  self.elementSize = exerciseService.getElementSizeForFrameSize(330);
 
   self.changeInput = function() {
     if (!$scope.isSummaryActive) {

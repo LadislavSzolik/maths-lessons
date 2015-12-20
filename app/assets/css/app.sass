@@ -6,7 +6,13 @@ $exe1-field-sum: 100px
 $valid-result-color: rgb(85, 248, 85)
 $invalid-result-color: rgb(255, 88, 88)
 
+a:link, a:visited, a:hover, a:active
+  text-decoration: none
+  color: white
 
+ul
+  list-style: none
+  padding: 0px
 
 body
   font-weight: 300
@@ -20,17 +26,60 @@ body
 header, section
   position: relative
 
-h1
-  font-family: "Helvetica Neue", Arial, sans-serif
-  font-size: 40px
-
-a:link, a:visited, a:hover, a:active
-  text-decoration: none
+.nav-btn
+  float: left
+  padding: 5px 5px
+  border-radius: 35px
   color: white
+  background-color: #3E7AD0
+  box-shadow: 0px 2px 4px 0px rgba(0,0,0,0.50)
+  position: absolute
 
-ul
-  list-style: none
-  padding: 0px
+  &-close
+    @extend .nav-btn
+    top: -10px
+    right: 10px
+
+  &-help
+    @extend .nav-btn
+    width: 50px
+    height: 50px
+    font-size: 28px
+    font-weight: bold
+    left: 20px
+    top: -10px
+
+  &-reload
+    @extend .nav-btn
+    top: -12px
+    left: 775px
+
+  &-top-left
+    @extend .nav-btn
+    top: $exec-field-size/2
+    left: 50px
+
+  &-top-right
+    @extend .nav-btn
+    top: $exec-field-size/2
+    right: 50px
+
+  &-bottom-left
+    @extend .nav-btn
+    left: 50px
+    bottom: 0px
+
+  &-bottom-right
+    @extend .nav-btn
+    right: 50px
+    bottom: 0px
+
+
+.exe-header
+  h1
+    font-family: "Helvetica Neue", Arial, sans-serif
+    font-size: 40px
+
 
 .disabled
   background-color: $btn-bcg-color-dis !important
@@ -55,30 +104,7 @@ ul
   width: 1000px !important
   padding: 5px 5px 20px 5px
 
-
 /* customized uib progress bar */
-
-.progess-container
-  margin-top: 25px
-
-.progress-box
-  width: 500px
-  display: inline-block
-  height: 30px
-  background-color: white
-  position: relative
-
-.reload-btn
-  margin-top: -12px
-  margin-left: 15px
-
-/* progress bar color */
-.progress-bar-exe1
-  background-color: #FFEED6
-
-.progress-color-exe1
-  border: 2px solid #E48400
-
 @mixin progress-bar-text($color)
   color: $color
   font-size: 26px
@@ -89,71 +115,45 @@ ul
   z-index: 2
   left: 0px
 
+.progess-container
+  margin-top: 25px
 
-.progress-bar-exe2
-  background-color: #F4CBFC
+  .progress-box
+    width: 500px
+    display: inline-block
+    height: 30px
+    background-color: white
+    position: relative
 
-.progress-color-exe2
-  border: 2px solid #E24CFF
+  .progress-bar-exe1
+    background-color: #FFEED6
+    b
+      color: #E48400
+      font-size: 26px
+      position: absolute
+      text-align: center
+      top: 4px
+      width: 100%
+      z-index: 2
+      left: 0px
 
+  .progress-color-exe1
+    border: 2px solid #E48400
 
-.progress-bar-exe1 b
-  @include progress-bar-text(#E48400)
+  .progress-bar-exe2
+    background-color: #F4CBFC
+    b
+      color: #E24CFF
+      font-size: 26px
+      position: absolute
+      text-align: center
+      top: 4px
+      width: 100%
+      z-index: 2
+      left: 0px
 
-.progress-bar-exe2 b
-  @include progress-bar-text(#E24CFF)
-
-
-/* exercise close button css */
-.close-btn
-  margin: 15px 15px 0px 0px
-  top: -20px
-  right: 0px
-
-.help-btn
-  width: 50px
-  height: 50px
-  font-size: 26px
-  color: white
-  margin: 15px 15px 0px 0px
-  left: 20px
-  top: -20px
-
-/* remove btn style */
-.remove-btn
-  position: absolute
-  top: 30px
-  right: 20px
-
-
-/* nav buttons in general */
-
-.nav-btn
-  float: left
-  padding: 5px 5px
-  border: 2px solid #ddd
-  border-radius: 35px
-  background-color: $button-bcg-color
-  box-shadow: 0px 2px 4px 0px rgba(0,0,0,0.50)
-  position: absolute
-
-.side-top-btn
-  top: $exec-field-size/2
-
-.left-nav-btn
-  left: 50px
-
-.right-nav-btn
-  right: 50px
-
-.side-bottom-btn
-  bottom: 0px
-
-/* exercise main  title css */
-.exercise-main-title
-  font-size: 40px
-  font-weight: 100
-  margin: 15px 0px 0px 10px
+  .progress-color-exe2
+    border: 2px solid #E24CFF
 
 
 
@@ -163,40 +163,51 @@ ul
   border: 2px solid $color
   background-color: #FFF
 
-.subexe-container-box
-  width: 680px
-  height: 480px
-  border-radius: 10px
-  padding: 15px
-  background-image: url(../img/exe1_bcg.png)
-  margin: auto
-  position: relative
+.main-content
 
-.container-field
-  position: relative
-  float: left
-  height: $exec-field-size
-  width: $exec-field-size
-  margin-right: 5px
-  @include exe-box-color(#FF9D23)
+  .subexe-container-box
+    width: 680px
+    height: 480px
+    border-radius: 10px
+    padding: 15px
+    margin: auto
+    position: relative
 
-.container-field-summary
-  position: relative
-  float: left
-  height: $exe1-field-sum
-  width: $exe1-field-sum
-  margin-right: 5px
-  @include exe-box-color(#FF9D23)
+    .object-arena
+      position: relative
+      float: left
+      height: $exec-field-size
+      width: $exec-field-size
+      margin-right: 5px
+      @include exe-box-color(#FF9D23)
 
+    .exe2-position
+      float: right !important
+      margin-top: 50px
+      margin-right: 35px
+      border-radius: 8px
+      border: 2px solid #7C3A78
+      background-color: #FFF
 
-.container-field-exe2
-  position: relative
-  float: right
-  height: $exec-field-size + 50px
-  width: $exec-field-size + 50px
-  margin-top: 20px
-  margin-left: 5px
-  @include exe-box-color(#E24CFF)
+    .arena-small
+      height: $exe1-field-sum !important
+      width: $exe1-field-sum !important
+
+    .remove-btn
+      position: absolute
+      top: 30px
+      right: 20px
+
+    .remove-btn-exe2-postion
+      top: 2px !important
+      right: 2px !important
+
+  .exe1-background
+    background-image: url(../img/exe1_bcg.png)
+
+  .exe2-background
+    background-image: url(../img/exe2_bcg.png)
+
 
 .container-field-exe2-summary
   position: relative
@@ -204,7 +215,6 @@ ul
   height: $exe1-field-sum
   width: $exe1-field-sum
   margin: 5px 25px 5px 5px
-
   @include exe-box-color(#E24CFF)
 
 
@@ -235,12 +245,31 @@ ul
   @include user-result-common(#FF9D23)
   cursor: pointer
 
-.exe2-number-box
-  font-size: 100px
-  margin-top: 40px
-  width: $exec-result-width
-  @include user-result-common(#E24CFF)
 
+/* EXE 2 style */
+
+.exe2-number-box
+  font-size: 80px
+  font-weight: bold
+  top: 50px
+  left: 68px
+  width: 144px
+  height: 144px
+  border-radius: 80px
+  border: 2px solid #7C3A78
+  text-align: center
+  position: absolute
+  background-color: #E2DA97 !important
+
+.exe2-object-holder-box
+  height: 200px
+  width: 200px
+  border-radius: 120px
+  border: 2px solid #7C3A78
+  background-color: #E2DA97
+  position: absolute
+  top: 260px
+  left: 40px
 
 .exe2-number-box-small
   font-size: 36px
@@ -250,21 +279,21 @@ ul
 
 /* require for exe1 */
 .counted-object
-  position: absolute  
+  position: absolute
 
 .number-row-container
   margin-top: 2%
 
-.input-number-row-li
-  display: inline-block
+  .input-number-row-li
+    display: inline-block
 
-.input-number-row
-  font-size: 48px
-  font-weight: bold
-  padding: 0px 13px
-  margin: 0px 4px
-  color: white
-  box-shadow: 0px 2px 4px 0px rgba(0,0,0,0.50)
+    .input-number-row
+      font-size: 48px
+      font-weight: bold
+      padding: 0px 13px
+      margin: 0px 4px
+      color: white
+      box-shadow: 0px 2px 4px 0px rgba(0,0,0,0.50)
 
 
 /* ---- Drag and drop exercise --- */
