@@ -18,6 +18,10 @@ exeModule.controller('exerciseMainCtrl', ['$scope', '$location', '$route', '$roo
 
   setProgressBarData();
 
+  $scope.test = function(){
+    console.log('yep');
+  }
+
   $scope.isCurrentExercise = function(index) {
     return $scope.currentPage == (index + 1);
   }
@@ -97,6 +101,7 @@ exeModule.controller('exe1Ctrl', ['$scope', 'exerciseService', function($scope, 
     if (!$scope.isSummaryActive) {
       self.userInput = self.userInput.substring(0, self.userInput.length - 1);
       self.changeInput();
+
     }
   }
 
@@ -417,7 +422,33 @@ exeModule.service('exerciseService', ['$rootScope', '$http', function($rootScope
   }
 }]);
 
+exeModule.directive('animateRubber', function(){
+  return {
+    link: link
+  }
+  function link(scope, element, attr) {
+    $(element).on("click",function(){
+      $(this).addClass('remove-btn-animate').delay(200).queue(function(next){
+          $(this).removeClass('remove-btn-animate');
+          next();
+      })
+    });
+  }
+});
 
+exeModule.directive('animateButton', function(){
+  return {
+    link: link
+  }
+  function link(scope, element, attr) {
+    $(element).on("click",function(){
+      $(this).addClass('nav-btn-animate').delay(200).queue(function(next){
+          $(this).removeClass('nav-btn-animate');
+          next();
+      })
+    });
+  }
+});
 
 function findNextSqrt(x) {
     if (Math.sqrt(x) % 1 > 0) {

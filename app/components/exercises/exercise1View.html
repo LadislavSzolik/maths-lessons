@@ -1,9 +1,9 @@
 <div class="exercise-container">
   <header class="exe-header">
-    <a class="nav-btn-help" href >
+    <a class="nav-btn-help" href animate-button  >
       ?
     </a>
-    <a class="nav-btn-close" href ng-click="exit()">
+    <a class="nav-btn-close" animate-button href ng-click="exit()">
       <ng-md-icon icon="close" size="36" style="fill:white"/>
     </a>
     <h1>{{allTexts.countExericseTitleText}}</h1>
@@ -14,17 +14,18 @@
       <b>{{currentPage}}/{{totalItems}}</b>
     </uib-progressbar>
 
-    <a class="nav-btn-reload" href ng-click="reload()">
+    <a class="nav-btn-reload" href ng-click="reload()" animate-button >
       <ng-md-icon icon="refresh" size="36" style="fill:white"/>
     </a>
   </section>
 
-  <section class="main-content">
-    <a class="nav-btn-top-left" href ng-class="{disabled:noPrevious()}" ng-click="selectPage(currentPage-1,$event)">
+  <section class="main-content" >
+    <!-- ng-swipe-left="selectPage(currentPage-1,$event)" ng-swipe-right="selectPage(currentPage+1,$event)" -->
+    <a class="nav-btn-top-left" href ng-class="{disabled:noPrevious()}" ng-click="selectPage(currentPage-1,$event)" animate-button >
       <ng-md-icon icon="navigate_before" size="48" style="fill:white"/>
     </a>
 
-    <a class="nav-btn-bottom-left hide" href ng-class="{show:isSummaryActive}" ng-click="currentPage = 1">
+    <a class="nav-btn-bottom-left hide" href ng-class="{show:isSummaryActive}" ng-click="currentPage = 1" animate-button>
       <ng-md-icon icon="apps" size="48" style="fill:white"/>
     </a>
 
@@ -53,13 +54,13 @@
                   <img class="counted-object" height="{{exe1Ctrl.elementSize}}" ng-repeat="pos in exe1Ctrl.positionArray" ng-src="{{exe1Ctrl.imgUrl}}" ng-style="{{pos}}"/>
                 </div>
                 <input class="form-control user-result" maxlength="2" ng-change="exe1Ctrl.changeInput()" ng-class="getResultColor($index+1)" ng-disabled="isSummaryActive" ng-model="exe1Ctrl.userInput" placeholder="?" required="" type="text"/>
-                <a class="remove-btn" href ng-class="{hide:isSummaryActive}" ng-click="exe1Ctrl.backspace()">
+                <a class="remove-btn" href ng-class="{hide:isSummaryActive}" animate-rubber ng-click="exe1Ctrl.backspace()">
                   <img src="./app/assets/img/rubber.png"/>
                 </a>
               </div>
               <ul class="number-row-container">
                 <li class="input-number-row-li" ng-repeat="key in [0,1,2,3,4,5,6,7,8,9]">
-                  <input class="input-number-row" ng-click="exe1Ctrl.setUserInput($index)" ng-disabled="isSummaryActive" ng-style="exe1Ctrl.getNumberStyle($index)" type="button" value="{{key}}"/>
+                  <input class="input-number-row" ng-click="exe1Ctrl.setUserInput($index)" animate-button ng-disabled="isSummaryActive" ng-style="exe1Ctrl.getNumberStyle($index)" type="button" value="{{key}}"/>
                 </li>
               </ul>
             </section>
@@ -90,23 +91,23 @@
             <div ng-controller="exe2Ctrl as exe2Ctrl" ng-if="!isSummaryActive || $index !== 0">
               <input class="form-control exe2-number-box" disabled type="text" value="{{subExercise.expectedResult}}"/>
               <div class="exe2-object-holder-box">
-                <a href ng-click="exe2Ctrl.addObject()">
+              <!--  <a href ng-click="exe2Ctrl.addObject()"> -->
                   <div class="counted-object" style="top:80px; left:125px;">
                     <img height="66px" ng-src="{{exe2Ctrl.imgUrl}}"/>
                   </div>
-                  <div class="counted-object" style="top: 80px; left:10px;">
+                  <div class="counted-object"  style="top: 80px; left:10px;">
                     <img height="66px" ng-src="{{exe2Ctrl.imgUrl}}"/>
                   </div>
-                  <div class="counted-object" style="top:30px; left:40px;">
+                  <div class="counted-object" style="top:30px; left:40px;" >
                     <img height="120px" ng-src="{{exe2Ctrl.imgUrl}}"/>
                   </div>
-                </a>
+                <!--</a> -->
               </div>
 
-              <div class="object-arena exe2-position" ng-class="getResultColor($index+1)">
+              <div class="object-arena exe2-position" ng-class="getResultColor($index+1)" >
                 <img class="counted-object" height="{{exe2Ctrl.elementSize}}" ng-click="exe2Ctrl.hide(pos)" ng-repeat="pos in exe2Ctrl.positionArray" ng-show="exe2Ctrl.isAdded(pos)" ng-src="{{exe2Ctrl.imgUrl}}" ng-style="{{pos}}" style="cursor:pointer;"/>
               </div>
-              <a class="remove-btn remove-btn-exe2-postion" href ng-class="{hide:isSummaryActive}" >
+              <a class="remove-btn remove-btn-exe2-postion" href ng-class="{hide:isSummaryActive}"  >
                 <img src="./app/assets/img/rubber.png"/>
               </a>
             </div>
@@ -116,10 +117,10 @@
 
     </div>
 
-    <a class="nav-btn-top-right" href ng-class="{disabled:noNext()}" ng-click="selectPage(currentPage+1,$event)">
+    <a class="nav-btn-top-right" href ng-class="{disabled:noNext()}" ng-click="selectPage(currentPage+1,$event)" animate-button >
       <ng-md-icon icon="navigate_next" size="48" style="fill:white"/>
     </a>
-    <a class="nav-btn-bottom-right" href ng-class="{disabled:isSummaryActive}" ng-click="checkResult()">
+    <a class="nav-btn-bottom-right" href ng-class="{disabled:isSummaryActive}" ng-click="checkResult()" animate-button>
       <ng-md-icon icon="done_all" size="48" style="fill:white"/>
     </a>
   </section>

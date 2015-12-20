@@ -1,4 +1,10 @@
-var mathApp = angular.module('mathApp', ['ngMdIcons', 'ui.bootstrap', 'ngRoute', 'mathServices', 'homeModule', 'mathExercises'])
+/*$.mobile.ajaxEnabled = false;
+    $.mobile.linkBindingEnabled = false;
+    $.mobile.hashListeningEnabled = false;
+    $.mobile.pushStateEnabled = false;
+    $.mobile.changePage.defaults.changeHash = false; */
+
+var mathApp = angular.module('mathApp', ['ngMdIcons', 'ngTouch','ui.bootstrap', 'ngRoute', 'mathServices', 'homeModule', 'mathExercises'])
   .config(['$routeProvider', function($routeProvider) {
     $routeProvider.when('/', {
         templateUrl: 'app/components/home/homeView.html',
