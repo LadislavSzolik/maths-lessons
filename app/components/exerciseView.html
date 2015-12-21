@@ -35,32 +35,32 @@
           <li ng-if="isCurrentExercise($index)" ng-repeat="subExercise in countExerciseData">
             <section ng-if="isSummaryActive && $index==0">
               <ul>
-                <li ng-controller="exe1Summary as exe1Summary" ng-if="$index!==0" ng-repeat="summary in $parent.countExerciseData">
+                <li ng-controller="exe1SubCtrlSummary as exe1SubCtrlSummary" ng-if="$index!==0" ng-repeat="summary in $parent.countExerciseData">
                   <a href ng-click="selectPage($index+1,$event)">
                     <div class="object-arena arena-small">
-                      <img class="counted-object" height="{{exe1Summary.elementSize}}" ng-repeat="pos in exe1Summary.positionArray" ng-src="{{exe1Summary.imgUrl}}" ng-style="{{pos}}"/>
+                      <img class="counted-object" height="{{exe1SubCtrlSummary.elementSize}}" ng-repeat="pos in exe1SubCtrlSummary.positionArray" ng-src="{{exe1SubCtrlSummary.imgUrl}}" ng-style="{{pos}}"/>
                     </div>
                     <div class="user-result-summary-container">
-                      <input class="form-control user-result-summary" disabled ng-class="summary.resultStyle" type="text" value="{{exe1Summary.userInput}}"/>
+                      <input class="form-control user-result-summary" disabled ng-class="summary.resultStyle" type="text" value="{{exe1SubCtrlSummary.userInput}}"/>
                     </div>
                   </a>
                 </li>
               </ul>
             </section>
 
-            <section ng-controller="exe1Ctrl as exe1Ctrl" ng-if="!isSummaryActive || $index !== 0">
+            <section ng-controller="exe1SubCtrl as exe1SubCtrl" ng-if="!isSummaryActive || $index !== 0">
               <div class="clearfix">
                 <div class="object-arena">
-                  <img class="counted-object" height="{{exe1Ctrl.elementSize}}" ng-repeat="pos in exe1Ctrl.positionArray" ng-src="{{exe1Ctrl.imgUrl}}" ng-style="{{pos}}"/>
+                  <img class="counted-object" height="{{exe1SubCtrl.elementSize}}" ng-repeat="pos in exe1SubCtrl.positionArray" ng-src="{{exe1SubCtrl.imgUrl}}" ng-style="{{pos}}"/>
                 </div>
-                <input class="form-control user-result" maxlength="2" ng-change="exe1Ctrl.changeInput()" ng-class="getResultColor($index+1)" ng-disabled="isSummaryActive" ng-model="exe1Ctrl.userInput" placeholder="?" required="" type="text"/>
-                <a animate-rubber class="remove-btn" href ng-class="{hide:isSummaryActive}" ng-click="exe1Ctrl.backspace()">
+                <input class="form-control user-result" maxlength="2" ng-change="exe1SubCtrl.changeInput()" ng-class="getResultColor($index+1)" ng-disabled="isSummaryActive" ng-model="exe1SubCtrl.userInput" placeholder="?" required="" type="text"/>
+                <a animate-rubber class="remove-btn" href ng-class="{hide:isSummaryActive}" ng-click="exe1SubCtrl.backspace()">
                   <img src="./app/assets/img/rubber.png"/>
                 </a>
               </div>
               <ul class="number-row-container">
                 <li class="input-number-row-li" ng-repeat="key in [0,1,2,3,4,5,6,7,8,9]">
-                  <input animate-button class="input-number-row" ng-click="exe1Ctrl.setUserInput($index)" ng-disabled="isSummaryActive" ng-style="exe1Ctrl.getNumberStyle($index)" type="button" value="{{key}}"/>
+                  <input animate-button class="input-number-row" ng-click="exe1SubCtrl.setUserInput($index)" ng-disabled="isSummaryActive" ng-style="exe1SubCtrl.getNumberStyle($index)" type="button" value="{{key}}"/>
                 </li>
               </ul>
             </section>
@@ -88,23 +88,23 @@
               </ul>
             </div>
 
-            <div ng-controller="exe2Ctrl as exe2Ctrl" ng-if="!isSummaryActive || $index !== 0">
+            <div ng-controller="exe2SubCtrl as exe2SubCtrl" ng-if="!isSummaryActive || $index !== 0">
               <input class="form-control exe2-number-box" disabled type="text" value="{{subExercise.expectedResult}}"/>
               <div class="exe2-object-holder-box" droppable-origin >
-                <!--  <a href ng-click="exe2Ctrl.addObject()"> -->
+                <!--  <a href ng-click="exe2SubCtrl.addObject()"> -->
                 <div class="counted-object" style="top:80px; left:125px;">
-                  <img height="66px" ng-src="{{exe2Ctrl.imgUrl}}"/>
+                  <img height="66px" ng-src="{{exe2SubCtrl.imgUrl}}"/>
                 </div>
                 <div class="counted-object" style="top: 80px; left:10px;">
-                  <img height="66px" ng-src="{{exe2Ctrl.imgUrl}}"/>
+                  <img height="66px" ng-src="{{exe2SubCtrl.imgUrl}}"/>
                 </div>
                 <!--</a> -->
               </div>
 
               <div class="object-arena exe2-position" droppable-object ng-class="getResultColor($index+1)">
-                <img class="counted-object" height="{{exe2Ctrl.elementSize}}" original-height="{{pos.elementSize}}" draggable-object ng-repeat="pos in exe2Ctrl.positionArray" ng-show="exe2Ctrl.isAdded(pos)" ng-src="{{exe2Ctrl.imgUrl}}" id="{{pos.id}}" ng-style="{{pos.initPlace}}" target-top="{{pos.targetPlace.top}}" target-left="{{pos.targetPlace.left}}" style="cursor:pointer;"/>
+                <img class="counted-object" height="{{exe2SubCtrl.elementSize}}" original-height="{{pos.elementSize}}" draggable-object ng-repeat="pos in exe2SubCtrl.positionArray" ng-show="exe2SubCtrl.isAdded(pos)" ng-src="{{exe2SubCtrl.imgUrl}}" id="{{pos.id}}" ng-style="{{pos.initPlace}}" target-top="{{pos.targetPlace.top}}" target-left="{{pos.targetPlace.left}}" style="cursor:pointer;"/>
               </div>
-              <a class="remove-btn remove-btn-exe2-postion" animate-rubber ng-click="exe2Ctrl.removeOne()"  href ng-class="{hide:isSummaryActive}">
+              <a class="remove-btn remove-btn-exe2-postion" animate-rubber ng-click="exe2SubCtrl.removeOne()"  href ng-class="{hide:isSummaryActive}">
                 <img src="./app/assets/img/rubber.png"/>
               </a>
             </div>
