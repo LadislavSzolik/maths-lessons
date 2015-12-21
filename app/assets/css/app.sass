@@ -207,13 +207,16 @@ header, section
       right: 20px
       transition: all 0.1s ease-in-out
 
+      &-exe2-postion
+        top: 2px
+        right: 2px
+
       &-animate
         top: 40px
         right: 30px
 
-    .remove-btn-exe2-postion
-      top: 2px !important
-      right: 2px !important
+
+
 
   .exe1-background
     background-image: url(../img/exe1_bcg.png)
@@ -293,6 +296,7 @@ header, section
 /* require for exe1 */
 .counted-object
   position: absolute
+  transform-origin: center
 
 .number-row-container
   margin-top: 2%
@@ -311,33 +315,3 @@ header, section
 
 
 /* ---- Drag and drop exercise --- */
-
-.result-circle-field
-  float: left
-  padding: 5px
-  margin-top: 85px
-  margin-left: 30px
-  padding-top: 25px
-  width: 90px
-  height: 90px
-  text-align: center
-  font-size: 25px
-  font-weight: 200
-  border-radius: 48px
-  border: 1px solid #FFF
-  background: rgb(44, 137, 150)
-
-.drop-field,
-.drop-target-field
-  position: relative
-  float: left
-  height: 259px
-  width: 259px
-  margin-right: 5px
-  border-radius: 8px
-  border: 1px solid #FFF
-  background-color: rgba(255, 255, 255, 0.4)
-  z-index: 99
-
-.drop-target-field
-  z-index: 98

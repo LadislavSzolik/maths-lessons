@@ -18,9 +18,6 @@ exeModule.controller('exerciseMainCtrl', ['$scope', '$location', '$route', '$roo
 
   setProgressBarData();
 
-  $scope.test = function(){
-    console.log('yep');
-  }
 
   $scope.isCurrentExercise = function(index) {
     return $scope.currentPage == (index + 1);
@@ -137,7 +134,7 @@ exeModule.controller('exe1Ctrl', ['$scope', 'exerciseService', function($scope, 
         background: "#00B47D",
         border: "2px solid #016F4D"
       };
-      }
+    }
   }
 
 }]);
@@ -149,7 +146,7 @@ exeModule.controller('exe1Summary', ['$scope', 'exerciseService', function($scop
   self.imgUrl = "app/assets/img/pink-flower.png";
 
   if (angular.isUndefined(exerciseService.getGridPoint())) {
-    exerciseService.setGridPoints(exerciseService.calculateGridPoints(exerciseService.getExpectedResult(index),80));
+    exerciseService.setGridPoints(exerciseService.calculateGridPoints(exerciseService.getExpectedResult(index), 80));
 
   }
   self.positionArray = exerciseService.addPositionsToElement(index, 80);
@@ -158,7 +155,7 @@ exeModule.controller('exe1Summary', ['$scope', 'exerciseService', function($scop
   self.userInput = exerciseService.getActualResult(index);
 }]);
 
-exeModule.controller('exe2Ctrl', ['$scope', 'exerciseService', function($scope, exerciseService) {
+exeModule.controller('exe2Ctrl', ['$scope', '$rootScope', 'exerciseService', function($scope, $rootScope, exerciseService) {
   var self = this;
   var index = $scope.$parent.$index;
   self.imgUrl = "app/assets/img/pink-flower.png";
@@ -206,9 +203,27 @@ exeModule.controller('exe2Ctrl', ['$scope', 'exerciseService', function($scope, 
     }
   }
 
+  self.addObject();
+
+
+  $rootScope.$on('dropped', function(){
+    self.addObject();
+    $rootScope.$digest();
+  });
+
   self.hide = function(pos) {
     pos.isDisplayed = false;
     self.changeInput();
+  }
+
+  self.removeOne = function() {
+    for (var i = 0; i < self.positionArray.length; i++) {
+      if (angular.isDefined(self.positionArray[i]) && self.positionArray[i].isDisplayed) {
+        self.positionArray[i].isDisplayed = false;
+        self.changeInput();
+        return;
+      }
+    }
   }
 
 }]);
@@ -221,7 +236,7 @@ exeModule.controller('exe2Summary', ['$scope', 'exerciseService', function($scop
 
 
   if (angular.isUndefined(exerciseService.getGridPoint())) {
-    exerciseService.setGridPoints(exerciseService.calculateGridPoints(25,80));
+    exerciseService.setGridPoints(exerciseService.calculateGridPoints(25, 80));
 
   }
   self.positionArray = exerciseService.addPositionsToElement(index, 80);
@@ -265,7 +280,15 @@ exeModule.service('exerciseService', ['$rootScope', '$http', function($rootScope
       positionArray.push({
         left: (coorX + 10) + 'px',
         top: (coorY + 10) + 'px',
-        isDisplayed: false
+        isDisplayed: false,
+        initPlace: {
+          top: '230px',
+          left: '-200px',
+          height: '120px',
+          'z-index': '99'
+        },
+        id: "object-" + j,
+        elementSize: elementSize
       });
     }
     return positionArray;
@@ -362,7 +385,10 @@ exeModule.service('exerciseService', ['$rootScope', '$http', function($rootScope
   var addNumberRows = function(data) {
     elements = [];
     for (i = 0; i < data.length; i++) {
-      elements.push({numberRow: data[i].numberRow, isCorrect: false});
+      elements.push({
+        numberRow: data[i].numberRow,
+        isCorrect: false
+      });
     }
   }
 
@@ -422,48 +448,98 @@ exeModule.service('exerciseService', ['$rootScope', '$http', function($rootScope
   }
 }]);
 
-exeModule.directive('animateRubber', function(){
+exeModule.directive('animateRubber', function() {
   return {
     link: link
   }
+
   function link(scope, element, attr) {
-    $(element).on("click",function(){
-      $(this).addClass('remove-btn-animate').delay(200).queue(function(next){
-          $(this).removeClass('remove-btn-animate');
-          next();
+    $(element).on("click", function() {
+      $(this).addClass('remove-btn-animate').delay(200).queue(function(next) {
+        $(this).removeClass('remove-btn-animate');
+        next();
       })
     });
   }
 });
 
-exeModule.directive('animateButton', function(){
+exeModule.directive('animateButton', function() {
   return {
     link: link
   }
+
   function link(scope, element, attr) {
-    $(element).on("click",function(){
-      $(this).addClass('nav-btn-animate').delay(200).queue(function(next){
-          $(this).removeClass('nav-btn-animate');
-          next();
+    $(element).on("click", function() {
+      $(this).addClass('nav-btn-animate').delay(200).queue(function(next) {
+        $(this).removeClass('nav-btn-animate');
+        next();
       })
     });
   }
+});
+
+exeModule.directive('draggableObject', ['$rootScope', function($rootScope) {
+  return {
+    link: link
+  }
+
+  function link(scope, element, attr) {
+
+    var elementLeft = element.offset().left;
+    var elementTop = element.offset().top;
+    $(element).draggable({
+      revert: "invalid",
+      stop: function(event, ui) {
+        if (ui.helper.data('dropped')) {
+          $(this).animate({
+            height: attr.originalHeight
+          }, 200);
+
+          $rootScope.$emit('dropped');
+
+        }
+      }
+    });
+
+    $(element).on("click", function() {
+
+    })
+  }
+
+}]);
+
+exeModule.directive('droppableObject', function() {
+  return {
+    link: link
+  }
+
+  function link(scope, element, attr) {
+    $(element).droppable({
+      drop: function(event, ui) {
+        if (!ui.draggable.data('dropped')) {
+          ui.draggable.data('dropped', true);
+        }
+
+      }
+    });
+  }
+
 });
 
 function findNextSqrt(x) {
-    if (Math.sqrt(x) % 1 > 0) {
-        return findNextSqrt(x + 1);
-    } else {
-        return x;
-    }
+  if (Math.sqrt(x) % 1 > 0) {
+    return findNextSqrt(x + 1);
+  } else {
+    return x;
+  }
 }
 
 
-var getNumberArr = function (upperLimit, repeatCount) {
-    var numberArr = [];
-    var counter = 0;
-    while (numberArr.length < (repeatCount * upperLimit)) {
-        numberArr.push((counter++ % upperLimit));
-    }
-    return numberArr;
+var getNumberArr = function(upperLimit, repeatCount) {
+  var numberArr = [];
+  var counter = 0;
+  while (numberArr.length < (repeatCount * upperLimit)) {
+    numberArr.push((counter++ % upperLimit));
+  }
+  return numberArr;
 }
