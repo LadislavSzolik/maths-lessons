@@ -169,14 +169,11 @@ exeModule.controller('exe2Ctrl', ['$scope', '$rootScope', 'exerciseService', fun
   }
   self.elementSize = exerciseService.getElementSizeForFrameSize(330);
 
+  var droppedObjects = [];
+
   self.changeInput = function() {
     if (!$scope.isSummaryActive) {
-      var userInput = 0;
-      for (var i = 0; i < self.positionArray.length; i++) {
-        if (angular.isDefined(self.positionArray[i]) && self.positionArray[i].isDisplayed) {
-          userInput++;
-        }
-      }
+      var userInput = droppedObjects.length
       exerciseService.setActualResult(userInput);
       exerciseService.savePositions(self.positionArray);
     }
@@ -206,10 +203,41 @@ exeModule.controller('exe2Ctrl', ['$scope', '$rootScope', 'exerciseService', fun
   self.addObject();
 
 
-  $rootScope.$on('dropped', function(){
+  $rootScope.$on('dropped', function(event, args) {
+    droppedObjects.push(args.objectId);
     self.addObject();
     $rootScope.$digest();
   });
+
+
+  var hidingObjects = function(objectId, localCall) {
+
+    for (var j = 0; j < droppedObjects.length; j++) {
+      if(droppedObjects[j] == objectId){
+          console.log("dropped array before hide: "+ droppedObjects);
+          droppedObjects.splice(j,1);
+          console.log("dropped array after hide: "+ droppedObjects);
+
+      }
+    }
+
+    for (var i = 0; i < self.positionArray.length; i++) {
+      if (self.positionArray[i].id == objectId) {
+        self.positionArray[i].isDisplayed = false;
+        self.changeInput();
+
+        if(angular.isUndefined(localCall) || localCall == false) {
+          console.log('hiding object digest call');
+          $rootScope.$digest();
+        }
+        return;
+      }
+    }
+  }
+
+  $rootScope.$on('hideObject', function(event, args) {
+    hidingObjects(args.objectId);
+  })
 
   self.hide = function(pos) {
     pos.isDisplayed = false;
@@ -217,12 +245,18 @@ exeModule.controller('exe2Ctrl', ['$scope', '$rootScope', 'exerciseService', fun
   }
 
   self.removeOne = function() {
-    for (var i = 0; i < self.positionArray.length; i++) {
-      if (angular.isDefined(self.positionArray[i]) && self.positionArray[i].isDisplayed) {
-        self.positionArray[i].isDisplayed = false;
-        self.changeInput();
-        return;
-      }
+
+    if (droppedObjects.length > 0) {
+      var objectId = droppedObjects[droppedObjects.length-1];
+      $("#"+objectId).css({
+        top: "230px",
+        left: "-200px",
+        height: "120px"
+      });
+      console.log('remove one: '+objectId);
+      $rootScope.$emit('hide.with.rubber', {objectId: objectId});
+      hidingObjects(objectId, true);
+
     }
   }
 
@@ -281,6 +315,10 @@ exeModule.service('exerciseService', ['$rootScope', '$http', function($rootScope
         left: (coorX + 10) + 'px',
         top: (coorY + 10) + 'px',
         isDisplayed: false,
+        targetPlace: {
+          left: (coorX + 10) + 'px',
+          top: (coorY + 10) + 'px'
+        },
         initPlace: {
           top: '230px',
           left: '-200px',
@@ -484,26 +522,65 @@ exeModule.directive('draggableObject', ['$rootScope', function($rootScope) {
   }
 
   function link(scope, element, attr) {
+    var alreadyDropped = false;
 
-    var elementLeft = element.offset().left;
-    var elementTop = element.offset().top;
+
+    var hideObject = function() {
+      $(element).css({
+        top: "230px",
+        left: "-200px",
+        height: "120px"
+      });
+      $rootScope.$emit('hideObject', {
+        objectId: attr.id
+      });
+    }
+
+
+    $rootScope.$on('hide.with.rubber', function(event, args) {
+      if(args.objectId == attr.id) {
+        alreadyDropped = false;
+      }
+    });
+
     $(element).draggable({
       revert: "invalid",
       stop: function(event, ui) {
-        if (ui.helper.data('dropped')) {
+        if (ui.helper.data('dropped-target') == true && alreadyDropped != true) {
           $(this).animate({
             height: attr.originalHeight
           }, 200);
 
-          $rootScope.$emit('dropped');
-
+          $rootScope.$emit('dropped', {
+            objectId: attr.id
+          });
+          alreadyDropped = true;
+        } else if (ui.helper.data('dropped-origin') == true) {
+          ui.helper.data('dropped-target', false);
+          ui.helper.data('dropped-origin', false);
+          alreadyDropped = false;
+          hideObject();
         }
       }
     });
 
     $(element).on("click", function() {
+      if (alreadyDropped == true) {
+        hideObject();
+        alreadyDropped = false;
+      } else {
+        $(this).animate({
+          height: attr.originalHeight,
+          top: attr.targetTop,
+          left: attr.targetLeft
+        }, 200);
+        alreadyDropped = true;
+        $rootScope.$emit('dropped', {
+          objectId: attr.id
+        });
+      }
+    });
 
-    })
   }
 
 }]);
@@ -516,8 +593,30 @@ exeModule.directive('droppableObject', function() {
   function link(scope, element, attr) {
     $(element).droppable({
       drop: function(event, ui) {
-        if (!ui.draggable.data('dropped')) {
-          ui.draggable.data('dropped', true);
+        if (ui.draggable.data('dropped-target') != true) {
+          ui.draggable.data('dropped-target', true);
+          ui.draggable.data('already-dropped', false);
+          ui.draggable.data('dropped-origin', false);
+        }
+
+      }
+    });
+  }
+
+});
+
+exeModule.directive('droppableOrigin', function() {
+  return {
+    link: link
+  }
+
+  function link(scope, element, attr) {
+    $(element).droppable({
+      drop: function(event, ui) {
+
+        if (ui.draggable.data('dropped-target') == true && ui.draggable.data('dropped-origin') != true) {
+          ui.draggable.data('dropped-origin', true);
+          ui.draggable.data('dropped-target', false);
         }
 
       }

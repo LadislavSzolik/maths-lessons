@@ -90,7 +90,7 @@
 
             <div ng-controller="exe2Ctrl as exe2Ctrl" ng-if="!isSummaryActive || $index !== 0">
               <input class="form-control exe2-number-box" disabled type="text" value="{{subExercise.expectedResult}}"/>
-              <div class="exe2-object-holder-box">
+              <div class="exe2-object-holder-box" droppable-origin >
                 <!--  <a href ng-click="exe2Ctrl.addObject()"> -->
                 <div class="counted-object" style="top:80px; left:125px;">
                   <img height="66px" ng-src="{{exe2Ctrl.imgUrl}}"/>
@@ -102,7 +102,7 @@
               </div>
 
               <div class="object-arena exe2-position" droppable-object ng-class="getResultColor($index+1)">
-                <img class="counted-object" height="{{exe2Ctrl.elementSize}}" original-height="{{pos.elementSize}}" draggable-object ng-repeat="pos in exe2Ctrl.positionArray" ng-show="exe2Ctrl.isAdded(pos)" ng-src="{{exe2Ctrl.imgUrl}}" id="{{pos.id}}" ng-style="{{pos.initPlace}}" style="cursor:pointer;"/>
+                <img class="counted-object" height="{{exe2Ctrl.elementSize}}" original-height="{{pos.elementSize}}" draggable-object ng-repeat="pos in exe2Ctrl.positionArray" ng-show="exe2Ctrl.isAdded(pos)" ng-src="{{exe2Ctrl.imgUrl}}" id="{{pos.id}}" ng-style="{{pos.initPlace}}" target-top="{{pos.targetPlace.top}}" target-left="{{pos.targetPlace.left}}" style="cursor:pointer;"/>
               </div>
               <a class="remove-btn remove-btn-exe2-postion" animate-rubber ng-click="exe2Ctrl.removeOne()"  href ng-class="{hide:isSummaryActive}">
                 <img src="./app/assets/img/rubber.png"/>
